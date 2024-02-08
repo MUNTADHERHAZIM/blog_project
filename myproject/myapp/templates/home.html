@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br><br><br>
+
+    <h1>My home page</h1>
+    <hr>
+    
+    <h2>Posts</h2>
+    {% for post in posts %}
+        <h3><a href="{% url 'article-detail' post.pk %}">{{ post.title | safe }}</a></h3>
+        <p>{{ post.body|truncatewords:10 |safe }}</p>
+        <p>Published by {{ post.author |safe }}</p>
+        <hr> <!-- Add a horizontal line between posts -->
+    {% endfor %}
+
+    <h2>Summaries</h2>
+    {% for summary in summaries %}
+        <h3>{{ summary.title }}</h3>
+        <p>{{ summary.body|safe }}</p>  <!-- Use safe filter to render HTML content -->
+        <p>Author: {{ summary.author }}</p>
+        <img src="{{ summary.image.url }}" alt="{{ summary.title }}">  <!-- Display image -->
+        <hr>  <!-- Add a horizontal line between summaries -->
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block content %}
+<br><br><br><br>
+
+        <h1>Article details page</h1>   
+        <hr>
+        {{post.title | safe}}
+        <br>
+        {{post.body | safe}}
+        {{summary.title | safe}}
+        <br>
+        {{summary.body | safe}}
+
+        <br>
+        <br>
+
+        <h2>Summaries</h2>
+        
+        <button type="button" class="btn btn-secondary"><a href="{% url 'home' %}">Home</a></button>
+        
+
+{% endblock %}
